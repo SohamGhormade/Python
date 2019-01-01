@@ -1,0 +1,104 @@
+# implement a BST in Python
+class BST(object):
+ "Binary Search Tree"
+  def __init__(self):
+  self.root = None
+  self.n = 0
+  def insert(self, val, root):
+   if root is None:
+    root = Node(val)
+    self.n += 1
+    return
+
+   if val > root.val :
+    self.insert(val, root.right)
+   else:
+    self.insert(val, root.left)
+
+  def size(self):
+   return self.n
+
+  def search(self, val, x, parent ):
+   x = parent = None
+   if root is None:
+    return False
+
+   temp = root
+   while temp is not None:
+
+    if temp.val == val :
+     x = temp
+     return True
+
+    parent = temp
+    if val > temp.val:
+     temp = temp.right
+    else
+     temp = temp.left
+
+   return False
+
+   def delete(self, val, root):
+    x = parent = None
+    found = self.search(val, x, parent)
+
+    if not found :
+     return
+
+    if x.left is not None nd x.right is not None:
+     xsucc = x.right
+     parent = x
+     while xsucc.left is not None:
+      parent = xsucc
+      xsucc = xsucc.left
+
+    x.val = xsucc.val
+    x = xsucc
+
+    self.n-=1
+
+  def preorder(self, root):
+   if root is not None:
+    print(root.val)
+    preorder(root.left)
+    preorder(root.right)
+   else
+     return
+
+  def postorder():
+   if root is not None:
+
+    postorder(root.left)
+    postorder(root.right)
+    print(root.val)
+   else
+     return
+
+  def inorder():
+   if root is not None:
+
+    inorder(root.left)
+    print(root.val)
+    inorder(root.right)
+
+   else
+     return
+
+class Node(object):
+ "Node for BST"
+ def __init__(self, val):
+  self.val = val
+  self.left = None
+  self.right = None
+
+bst = BST()
+bst.insert(5)
+bst.insert(1)
+bst.insert(18)
+bst.insert(0)
+bst.insert(4)
+bst.insert(21)
+bst.insert(19)
+bst.delete(4)
+bst.delete(18)
+
